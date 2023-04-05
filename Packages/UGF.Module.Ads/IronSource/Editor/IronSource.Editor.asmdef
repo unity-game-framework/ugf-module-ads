@@ -1,0 +1,18 @@
+{
+    "name": "IronSource.Editor",
+    "rootNamespace": "IronSource.Editor",
+    "references": [
+        "GUID:c44d11675d9800143ac9c5178f4f9043"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
