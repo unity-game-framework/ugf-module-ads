@@ -5,27 +5,27 @@ using UnityEngine;
 public class IronSourceMenu : UnityEditor.Editor
 {
 
-   [MenuItem("Ads Mediation/Documentation", false, 0)]
+   [MenuItem("Window/Ads Mediation/Documentation", false, 5000)]
     public static void Documentation()
     {
         Application.OpenURL("https://developers.is.com/ironsource-mobile/unity/unity-plugin/");
     }
 
    
-    [MenuItem("Ads Mediation/SDK Change Log", false, 1)]
+    [MenuItem("Window/Ads Mediation/SDK Change Log", false, 5000)]
     public static void ChangeLog()
     {
         Application.OpenURL("https://developers.is.com/ironsource-mobile/unity/sdk-change-log/");
     }
 
 
-    [MenuItem("Ads Mediation/Integration Manager", false , 2)]
+    [MenuItem("Window/Ads Mediation/Integration Manager", false , 5000)]
     public static void SdkManagerProd()
     {
         IronSourceDependenciesManager.ShowISDependenciesManager();
     }
 
-    [MenuItem("Ads Mediation/Developer Settings/LevelPlay Mediation Settings", false, 3)]
+    [MenuItem("Window/Ads Mediation/Developer Settings/LevelPlay Mediation Settings", false, 5000)]
     public static void mediationSettings()
     {
         string path = "Assets/IronSource/Resources";
@@ -48,7 +48,7 @@ public class IronSourceMenu : UnityEditor.Editor
         Selection.activeObject = ironSourceMediationSettings;
     }
 
-    [MenuItem("Ads Mediation/Developer Settings/Mediated Network Settings", false, 4)]
+    [MenuItem("Window/Ads Mediation/Developer Settings/Mediated Network Settings", false, 5000)]
     public static void mediatedNetworkSettings()
     {
         string path = IronSourceConstants.IRONSOURCE_RESOURCES_PATH;
