@@ -1,0 +1,19 @@
+{
+    "name": "UGF.Module.Ads.Editor",
+    "rootNamespace": "UGF.Module.Ads.Editor",
+    "references": [
+        "GUID:87ec12ddbefdda34d82956f8e06eb85f",
+        "GUID:abdd615e45137c74ca2ce9c636c78c15"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
