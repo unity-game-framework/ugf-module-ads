@@ -1,0 +1,22 @@
+{
+  "name": "com.ugf.module.ads",
+  "displayName": "UGF.Module.Ads",
+  "version": "0.0.0-preview",
+  "unity": "2022.2",
+  "apiCompatibility": ".NET Standard 2.1",
+  "description": "Module to manage Unity Ads.",
+  "author": {
+    "name": "Unity Game Framework",
+    "url": "https://github.com/unity-game-framework"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/unity-game-framework/ugf-module-ads.git"
+  },
+  "changelogUrl": "https://github.com/unity-game-framework/ugf-module-ads/blob/main/changelog.md",
+  "licensesUrl": "https://github.com/unity-game-framework/ugf-module-ads/blob/main/license",
+  "publishConfig": {
+    "registry": "https://unitygameframework.jfrog.io/artifactory/api/npm/default"
+  },
+  "dependencies": {}
+}
