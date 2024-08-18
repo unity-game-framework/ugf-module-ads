@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using UGF.Application.Runtime;
+using UGF.Description.Runtime;
 using UGF.EditorTools.Runtime.Ids;
 
 namespace UGF.Module.Ads.Runtime
 {
-    public interface IAdsModuleDescription : IApplicationModuleDescription
+    public interface IAdsModuleDescription : IDescription
     {
         bool EnableOnInitializeAsync { get; }
         IReadOnlyDictionary<GlobalId, IAdDescription> Ads { get; }

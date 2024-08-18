@@ -8,10 +8,13 @@ namespace UGF.Module.Ads.Runtime
 {
     public abstract class AdsModule<TDescription> : ApplicationModuleAsync<TDescription>, IAdsModule where TDescription : class, IAdsModuleDescription
     {
+        protected ILog Logger { get; }
+
         IAdsModuleDescription IAdsModule.Description { get { return Description; } }
 
         protected AdsModule(TDescription description, IApplication application) : base(description, application)
         {
+            Logger = Log.CreateWithLabel(GetType().Name);
         }
 
         protected override async Task OnInitializeAsync()
@@ -20,7 +23,7 @@ namespace UGF.Module.Ads.Runtime
 
             if (Description.EnableOnInitializeAsync)
             {
-                Log.Debug("Ads enabling.");
+                Logger.Debug("Enabling.");
 
                 await EnableAsync();
             }
@@ -46,7 +49,7 @@ namespace UGF.Module.Ads.Runtime
 
             IAdDescription description = GetAd(adId);
 
-            Log.Debug("Ads showing", new
+            Logger.Debug("Showing", new
             {
                 adId,
                 description.GetType().Name

@@ -2,7 +2,7 @@
 {
     public class AdResultError : IAdResult
     {
-        public bool IsSuccessful { get; } = true;
+        public bool IsSuccessful { get; } = false;
         public static AdResultError Instance { get; } = new AdResultError();
     }
 }

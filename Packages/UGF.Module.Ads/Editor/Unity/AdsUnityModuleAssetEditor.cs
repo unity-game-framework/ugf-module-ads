@@ -50,6 +50,10 @@ namespace UGF.Module.Ads.Editor.Editor.Unity
                 m_listRewardedVideos.DrawGUILayout();
                 m_listRewardedVideosSelection.DrawGUILayout();
             }
+
+#if !UGF_MODULE_ADS_LEVELPLAY_INSTALLED
+            EditorGUILayout.HelpBox("Ads Unity Module: LevelPlay package required.", MessageType.Warning);
+#endif
         }
     }
 }

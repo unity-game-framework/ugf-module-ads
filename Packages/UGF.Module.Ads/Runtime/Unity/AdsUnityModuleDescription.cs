@@ -10,11 +10,10 @@ namespace UGF.Module.Ads.Runtime.Unity
         public bool ValidateIntegration { get; }
 
         public AdsUnityModuleDescription(
-            Type registerType,
             bool enableOnInitializeAsync,
             IReadOnlyDictionary<GlobalId, IAdDescription> ads,
             string appKey,
-            bool validateIntegration) : base(registerType, enableOnInitializeAsync, ads)
+            bool validateIntegration) : base(enableOnInitializeAsync, ads)
         {
             if (string.IsNullOrEmpty(appKey)) throw new ArgumentException("Value cannot be null or empty.", nameof(appKey));
 
