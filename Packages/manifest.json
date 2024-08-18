@@ -1,8 +1,8 @@
 {
   "dependencies": {
     "com.unity.ide.rider": "3.0.31",
-    "com.unity.test-framework": "1.4.5",
-    "com.unity.services.levelplay": "8.2.0"
+    "com.unity.services.levelplay": "8.2.0",
+    "com.unity.test-framework": "1.4.5"
   },
   "scopedRegistries": [
     {

@@ -9,8 +9,6 @@ namespace UGF.Module.Ads.Runtime.Unity
 {
     public class AdsUnityModule : AdsModule<AdsUnityModuleDescription>
     {
-        public IronSourceIAgent Agent { get { return IronSource.Agent; } }
-
         private InitializeState m_state;
         private InitializeState m_ironSourceInitialize;
         private bool m_rewardedVideoInProgress;
@@ -24,34 +22,43 @@ namespace UGF.Module.Ads.Runtime.Unity
         {
             base.OnInitialize();
 
+#if UGF_MODULE_ADS_LEVELPLAY_INSTALLED
             IronSourceEvents.onSdkInitializationCompletedEvent += OnIronSourceInitializationCompleted;
             IronSourceRewardedVideoEvents.onAdRewardedEvent += OnIronSourceRewardedVideoRewarded;
             IronSourceRewardedVideoEvents.onAdClosedEvent += OnIronSourceRewardedVideoClosed;
             IronSourceRewardedVideoEvents.onAdShowFailedEvent += OnIronSourceRewardedVideoShowFailed;
+#else
+            throw new NotSupportedException("Ads Unity Module: LevelPlay package required.");
+#endif
         }
 
         protected override void OnUninitialize()
         {
             base.OnUninitialize();
 
+#if UGF_MODULE_ADS_LEVELPLAY_INSTALLED
             IronSourceEvents.onSdkInitializationCompletedEvent -= OnIronSourceInitializationCompleted;
             IronSourceRewardedVideoEvents.onAdRewardedEvent -= OnIronSourceRewardedVideoRewarded;
             IronSourceRewardedVideoEvents.onAdClosedEvent -= OnIronSourceRewardedVideoClosed;
             IronSourceRewardedVideoEvents.onAdShowFailedEvent -= OnIronSourceRewardedVideoShowFailed;
+#else
+            throw new NotSupportedException("Ads Unity Module: LevelPlay package required.");
+#endif
         }
 
         protected override async Task<bool> OnEnableAsync()
         {
+#if UGF_MODULE_ADS_LEVELPLAY_INSTALLED
             m_state = m_state.Initialize();
 
             if (Description.ValidateIntegration)
             {
                 Logger.Debug("Ads Unity validating integration.");
 
-                Agent.validateIntegration();
+                IronSource.Agent.validateIntegration();
             }
 
-            Agent.init(Description.AppKey);
+            IronSource.Agent.init(Description.AppKey);
 
             if (!m_ironSourceInitialize)
             {
@@ -59,25 +66,33 @@ namespace UGF.Module.Ads.Runtime.Unity
             }
 
             return true;
+#else
+            throw new NotSupportedException("Ads Unity Module: LevelPlay package required.");
+#endif
         }
 
         protected override bool OnIsAvailable(GlobalId adId, IAdDescription description)
         {
+#if UGF_MODULE_ADS_LEVELPLAY_INSTALLED
             switch (description)
             {
                 case AdUnityRewardedVideoDescription:
                 {
-                    return Agent.isRewardedVideoAvailable();
+                    return IronSource.Agent.isRewardedVideoAvailable();
                 }
                 default:
                 {
                     throw new ArgumentException($"Ad description type is unknown: '{description}'.");
                 }
             }
+#else
+            throw new NotSupportedException("Ads Unity Module: LevelPlay package required.");
+#endif
         }
 
         protected override async Task<IAdResult> OnShowAsync(GlobalId adId, IAdDescription description)
         {
+#if UGF_MODULE_ADS_LEVELPLAY_INSTALLED
             switch (description)
             {
                 case AdUnityRewardedVideoDescription rewardedVideoDescription:
@@ -86,7 +101,7 @@ namespace UGF.Module.Ads.Runtime.Unity
 
                     m_rewardedVideoInProgress = true;
 
-                    Agent.showRewardedVideo(rewardedVideoDescription.PlacementName);
+                    IronSource.Agent.showRewardedVideo(rewardedVideoDescription.PlacementName);
 
                     while (m_rewardedVideoResult == null)
                     {
@@ -105,8 +120,12 @@ namespace UGF.Module.Ads.Runtime.Unity
                     throw new ArgumentException($"Ad description type is unknown: '{description}'.");
                 }
             }
+#else
+            throw new NotSupportedException("Ads Unity Module: LevelPlay package required.");
+#endif
         }
 
+#if UGF_MODULE_ADS_LEVELPLAY_INSTALLED
         private void OnIronSourceInitializationCompleted()
         {
             m_ironSourceInitialize = m_ironSourceInitialize.Initialize();
@@ -126,5 +145,6 @@ namespace UGF.Module.Ads.Runtime.Unity
         {
             m_rewardedVideoResult = AdResultError.Instance;
         }
+#endif
     }
 }
