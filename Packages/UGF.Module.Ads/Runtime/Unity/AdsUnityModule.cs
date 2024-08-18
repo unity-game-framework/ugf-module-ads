@@ -35,6 +35,9 @@ namespace UGF.Module.Ads.Runtime.Unity
             base.OnUninitialize();
 
             IronSourceEvents.onSdkInitializationCompletedEvent -= OnIronSourceInitializationCompleted;
+            IronSourceRewardedVideoEvents.onAdRewardedEvent -= OnIronSourceRewardedVideoRewarded;
+            IronSourceRewardedVideoEvents.onAdClosedEvent -= OnIronSourceRewardedVideoClosed;
+            IronSourceRewardedVideoEvents.onAdShowFailedEvent -= OnIronSourceRewardedVideoShowFailed;
         }
 
         protected override async Task<bool> OnEnableAsync()
@@ -43,7 +46,7 @@ namespace UGF.Module.Ads.Runtime.Unity
 
             if (Description.ValidateIntegration)
             {
-                Log.Debug("Ads Unity validating integration.");
+                Logger.Debug("Ads Unity validating integration.");
 
                 Agent.validateIntegration();
             }

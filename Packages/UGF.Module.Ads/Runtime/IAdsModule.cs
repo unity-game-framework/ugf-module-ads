@@ -6,7 +6,7 @@ namespace UGF.Module.Ads.Runtime
 {
     public interface IAdsModule : IApplicationModuleAsync
     {
-        new IAdsModuleDescription Description { get; }
+        IAdsModuleDescription Description { get; }
 
         Task<bool> EnableAsync();
         bool IsAvailable(GlobalId adId);

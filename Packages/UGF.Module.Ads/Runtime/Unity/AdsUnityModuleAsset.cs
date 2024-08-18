@@ -19,7 +19,7 @@ namespace UGF.Module.Ads.Runtime.Unity
         public bool ValidateIntegration { get { return m_validateIntegration; } set { m_validateIntegration = value; } }
         public List<AssetIdReference<AdUnityRewardedVideoDescriptionAsset>> RewardedVideos { get { return m_rewardedVideos; } }
 
-        protected override IApplicationModuleDescription OnBuildDescription()
+        protected override AdsUnityModuleDescription OnBuildDescription()
         {
             var ads = new Dictionary<GlobalId, IAdDescription>();
 
@@ -30,9 +30,7 @@ namespace UGF.Module.Ads.Runtime.Unity
                 ads.Add(reference.Guid, reference.Asset.Build());
             }
 
-            return new AdsUnityModuleDescription(
-                typeof(IAdsModule),
-                m_enableOnInitializeAsync,
+            return new AdsUnityModuleDescription(m_enableOnInitializeAsync,
                 ads,
                 m_appKey,
                 m_validateIntegration
