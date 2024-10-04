@@ -1,12 +1,9 @@
 ﻿namespace UGF.Module.Ads.Runtime.Unity
 {
-    public class AdUnityRewardedVideoResult : IAdResult
+    public class AdUnityRewardedVideoResult : AdResult
     {
-        public bool IsSuccessful { get; }
-
-        public AdUnityRewardedVideoResult(bool isSuccessful)
+        public AdUnityRewardedVideoResult(bool isSuccessful) : base(isSuccessful)
         {
-            IsSuccessful = isSuccessful;
         }
     }
 }
