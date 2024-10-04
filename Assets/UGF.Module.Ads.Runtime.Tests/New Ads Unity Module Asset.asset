@@ -15,4 +15,18 @@ MonoBehaviour:
   m_enableOnInitializeAsync: 0
   m_appKey: 
   m_validateIntegration: 0
-  m_rewardedVideos: []
+  m_rewardedVideos:
+  - m_guid:
+      serializedVersion: 2
+      Hash: a90ce17e5154e45a58eb1fd0a420c0dd
+    m_asset: {fileID: 11400000, guid: 7ee10ca954515ae458eb1fd0a420c0dd, type: 2}
+  m_interstitials:
+  - m_guid:
+      serializedVersion: 2
+      Hash: 9f1a26051a0ee4db88762d4607b5ea79
+    m_asset: {fileID: 11400000, guid: 05261a9f0e1adbe488762d4607b5ea79, type: 2}
+  m_banners:
+  - m_guid:
+      serializedVersion: 2
+      Hash: 15b38814082a4411fab75a4ec88d1dd6
+    m_asset: {fileID: 11400000, guid: 1488b3152a081144fab75a4ec88d1dd6, type: 2}
